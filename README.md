@@ -24,6 +24,7 @@ is required in <b> transfers_service</b>
 
 
 ## Future Improvements
+- Unit and Integration Tests to be implemented in all Services (Currently in wallets_service only)
 - Swagger (API Documentations) to be used
 - Spring Validations should be added and violations handled
 - Kafka integration should be added in wallets_domain_service and events to be published in case of transfer full flow success
