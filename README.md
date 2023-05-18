@@ -20,6 +20,8 @@ is required in <b> transfers_service</b>
 ![img_1.png](img_1.png)
 
 ## Low Level Architecture
+This is an Example of the low level code design in wallets_service which is applied in all other service.
+
 ![img_2.png](img_2.png)
 
 
