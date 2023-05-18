@@ -1,0 +1,19 @@
+spring:
+ application:
+  name: 'wallets-service'
+
+app:
+ base:
+  uri: '/wallets-service/api/v1'
+
+web-client:
+ services:
+  wallet-service:
+   base-uri: 'http://mockoon.tools.getontop.com:3000'
+   api-prefix: '/wallets'
+   get-balance-api: '/balance'
+   create-transaction-api: '/transactions'
+ timeout: 5000
+
+server:
+  port: 8085

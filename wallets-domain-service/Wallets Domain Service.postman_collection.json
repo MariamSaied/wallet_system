@@ -1,0 +1,370 @@
+{
+	"info": {
+		"_postman_id": "2371d4c7-24f0-4e0b-9507-30602fe4d975",
+		"name": "Wallets Domain Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Transfer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 1,\n    \"beneficiaryId\": 1,\n    \"amount\": 500\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/wallets-domain-service/api/v1/transfers/transfer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"wallets-domain-service",
+						"api",
+						"v1",
+						"transfers",
+						"transfer"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 (Successful Transfer)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"beneficiaryId\": 1,\n    \"amount\": 789\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/wallets-domain-service/api/v1/transfers/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"wallets-domain-service",
+								"api",
+								"v1",
+								"transfers",
+								"transfer"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 May 2023 14:53:41 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 200,\n    \"message\": \"OK\",\n    \"body\": {\n        \"userId\": 1,\n        \"beneficiaryId\": 1,\n        \"amount\": 789,\n        \"walletTransaction\": {\n            \"walletTransactionId\": 23413,\n            \"userId\": 1,\n            \"amount\": 789,\n            \"operation\": \"WITHDRAW\",\n            \"balanceBefore\": 2500,\n            \"balanceAfter\": 1711\n        },\n        \"transfer\": {\n            \"requestInfo\": {\n                \"status\": \"Processing\"\n            },\n            \"paymentInfo\": {\n                \"amount\": 789,\n                \"id\": \"d2da463d-cc86-4918-8c20-8f835f835a80\"\n            }\n        }\n    }\n}"
+				},
+				{
+					"name": "400 (Insufficient Balance)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"beneficiaryId\": 1,\n    \"amount\": 6000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/wallets-domain-service/api/v1/transfers/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"wallets-domain-service",
+								"api",
+								"v1",
+								"transfers",
+								"transfer"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 May 2023 14:55:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 440,\n    \"message\": \"User has insufficient funds\",\n    \"body\": {\n        \"code\": 440,\n        \"message\": \"User has insufficient funds\",\n        \"body\": {\n            \"userId\": 1,\n            \"amount\": 6000,\n            \"balanceBefore\": 2500,\n            \"operation\": \"WITHDRAW\"\n        }\n    }\n}"
+				},
+				{
+					"name": "400 (Beneficiary Not Found)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"beneficiaryId\": 7,\n    \"amount\": 6000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/wallets-domain-service/api/v1/transfers/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"wallets-domain-service",
+								"api",
+								"v1",
+								"transfers",
+								"transfer"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 May 2023 14:56:24 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 412,\n    \"message\": \"No Beneficiary found with Id: 7\",\n    \"body\": {\n        \"code\": 412,\n        \"message\": \"No Beneficiary found with Id: 7\",\n        \"body\": null\n    }\n}"
+				},
+				{
+					"name": "500 (Beneficieries Service Unreachable)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"beneficiaryId\": 7,\n    \"amount\": 6000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/wallets-domain-service/api/v1/transfers/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"wallets-domain-service",
+								"api",
+								"v1",
+								"transfers",
+								"transfer"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 May 2023 14:58:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 530,\n    \"message\": \"Beneficiaries Service is unreachable\"\n}"
+				},
+				{
+					"name": "500 (Transfers Service Unreachable)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"beneficiaryId\": 1,\n    \"amount\": 500\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/wallets-domain-service/api/v1/transfers/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"wallets-domain-service",
+								"api",
+								"v1",
+								"transfers",
+								"transfer"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 May 2023 14:59:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 528,\n    \"message\": \"Transfers Service is unreachable\"\n}"
+				},
+				{
+					"name": "500 (Wallets Service Unreachable)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"beneficiaryId\": 1,\n    \"amount\": 500\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/wallets-domain-service/api/v1/transfers/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"wallets-domain-service",
+								"api",
+								"v1",
+								"transfers",
+								"transfer"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 May 2023 14:59:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 529,\n    \"message\": \"Wallets Service is unreachable\"\n}"
+				}
+			]
+		}
+	]
+}

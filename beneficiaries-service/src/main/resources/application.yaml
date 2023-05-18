@@ -1,0 +1,36 @@
+spring:
+ application:
+  name: 'beneficiaries-service'
+ datasource:
+  password: password
+  driver-class-name: 'org.postgresql.Driver'
+  username: postgres
+  url: 'jdbc:postgresql://localhost:5432/beneficiaries-service'
+  initialize: false
+  tomcat:
+   initial-size: 0
+   time-between-eviction-runs-millis: 5000
+   min-evictable-idle-time-millis: 5000
+   min-idle: 0
+ jpa:
+  hibernate:
+   ddl-auto: 'update'
+  properties:
+   hibernate:
+    dialect: 'org.hibernate.dialect.PostgreSQL91Dialect'
+    hbm2ddl:
+     auto: none
+    temp:
+     use_jdbc_metadata_defaults: false
+ sql:
+  init:
+   continue-on-error: true
+
+app:
+ base:
+  uri: '/beneficiaries-service/api/v1'
+ get-beneficiary: '/beneficiaries/beneficiary/{id}'
+ create-beneficiary: '/beneficiaries/beneficiary'
+
+server:
+  port: 8086

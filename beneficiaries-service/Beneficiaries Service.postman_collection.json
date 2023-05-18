@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "790d6d99-0e6a-46f7-9298-784e3fc5cca9",
+		"name": "Beneficiaries Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Beneficiary",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "201",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Mariam\",\n    \"lastName\": \"Eskander\",\n    \"routingNumber\": \"84039809\",\n    \"nationalId\": \"930293029232\",\n    \"accountNumber\": \"293209002\",\n    \"bankName\": \"HSBC\",\n    \"userId\": 203\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8086/beneficiaries-service/api/v1/beneficiaries/beneficiary",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"beneficiaries-service",
+								"api",
+								"v1",
+								"beneficiaries",
+								"beneficiary"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 16 May 2023 06:45:12 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 201,\n    \"message\": \"Created\",\n    \"body\": {\n        \"beneficiaryId\": 553,\n        \"firstName\": \"Mariam\",\n        \"lastName\": \"Eskander\",\n        \"routingNumber\": \"84039809\",\n        \"nationalId\": \"930293029232\",\n        \"accountNumber\": \"293209002\",\n        \"bankName\": \"HSBC\",\n        \"userId\": 203\n    }\n}"
+				},
+				{
+					"name": "Duplicate User Id",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Mariam\",\n    \"lastName\": \"Eskander\",\n    \"routingNumber\": \"84039809\",\n    \"nationalId\": \"930293029232\",\n    \"accountNumber\": \"293209002\",\n    \"bankName\": \"HSBC\",\n    \"userId\": 203\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8086/beneficiaries-service/api/v1/beneficiaries/beneficiary",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"beneficiaries-service",
+								"api",
+								"v1",
+								"beneficiaries",
+								"beneficiary"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 May 2023 12:44:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 417,\n    \"message\": \"Key (user_id)=(203) already exists.\"\n}"
+				},
+				{
+					"name": "Database is down",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Mariam\",\n    \"lastName\": \"Eskander\",\n    \"routingNumber\": \"84039809\",\n    \"nationalId\": \"930293029232\",\n    \"accountNumber\": \"293209002\",\n    \"bankName\": \"HSBC\",\n    \"userId\": 204\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8086/beneficiaries-service/api/v1/beneficiaries/beneficiary",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"beneficiaries-service",
+								"api",
+								"v1",
+								"beneficiaries",
+								"beneficiary"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 May 2023 13:33:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 516,\n    \"message\": \"Error is encountered accessing Database\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Beneficiary",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8086/beneficiaries-service/api/v1/beneficiaries/beneficiary/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"beneficiaries-service",
+								"api",
+								"v1",
+								"beneficiaries",
+								"beneficiary",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 16 May 2023 06:45:46 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 200,\n    \"message\": \"OK\",\n    \"body\": {\n        \"beneficiaryId\": 1,\n        \"firstName\": \"Mariam\",\n        \"lastName\": \"Eskander\",\n        \"routingNumber\": \"84039809\",\n        \"nationalId\": \"930293029232\",\n        \"accountNumber\": \"293209002\",\n        \"bankName\": \"HSBC\",\n        \"userId\": 200\n    }\n}"
+				},
+				{
+					"name": "400 (Not Found)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8086/beneficiaries-service/api/v1/beneficiaries/beneficiary/900",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"beneficiaries-service",
+								"api",
+								"v1",
+								"beneficiaries",
+								"beneficiary",
+								"900"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 16 May 2023 06:46:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 404,\n    \"message\": \"No Beneficiary found with Id: 900\"\n}"
+				}
+			]
+		}
+	]
+}

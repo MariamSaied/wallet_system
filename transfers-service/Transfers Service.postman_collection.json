@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "dcd0debb-175d-4965-90af-b23973222993",
+		"name": "Transfers Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Transfer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"beneficiary\":{\n        \"name\": \"Mariam\",\n        \"account\": {\n            \"accountNumber\": \"93093809\",\n            \"currency\": \"USD\",\n            \"routingNumber\": \"928392\"\n        }\n    },\n    \"amount\": 1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8087/transfers-service/api/v1/transfers/transfer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"api",
+						"v1",
+						"transfers-service",
+						"transfers",
+						"transfer"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successful Transfer",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"beneficiary\":{\n        \"name\": \"Mariam\",\n        \"account\": {\n            \"accountNumber\": \"93093809\",\n            \"currency\": \"USD\",\n            \"routingNumber\": \"928392\"\n        }\n    },\n    \"amount\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/transfers-service/api/v1/transfers/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"transfers-service",
+								"api",
+								"v1",
+								"transfers",
+								"transfer"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 15 May 2023 20:08:51 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 200,\n    \"message\": \"OK\",\n    \"body\": {\n        \"requestInfo\": {\n            \"status\": \"Processing\"\n        },\n        \"paymentInfo\": {\n            \"amount\": 1000,\n            \"id\": \"68a93bfb-7e92-42e7-9deb-fbff626f4c2c\"\n        }\n    }\n}"
+				},
+				{
+					"name": "500 (with destination name JAMES FAILED)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"beneficiary\":{\n        \"name\": \"JAMES FAILED\",\n        \"account\": {\n            \"accountNumber\": \"93093809\",\n            \"currency\": \"USD\",\n            \"routingNumber\": \"928392\"\n        }\n    },\n    \"amount\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/transfers-service/api/v1/transfers/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"transfers-service",
+								"api",
+								"v1",
+								"transfers",
+								"transfer"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 15 May 2023 20:06:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 500,\n    \"message\": \"bank rejected payment\",\n    \"body\": {\n        \"requestInfo\": {\n            \"status\": \"Failed\",\n            \"error\": \"bank rejected payment\"\n        },\n        \"paymentInfo\": {\n            \"amount\": 1000,\n            \"id\": \"c5dcd484-d8bf-45d1-8ca3-1caeac177376\"\n        }\n    }\n}"
+				},
+				{
+					"name": "500 timeout (with destination name JAMES TIMEOUT)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"beneficiary\":{\n        \"name\": \"JAMES TIMEOUT\",\n        \"account\": {\n            \"accountNumber\": \"93093809\",\n            \"currency\": \"USD\",\n            \"routingNumber\": \"928392\"\n        }\n    },\n    \"amount\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/transfers-service/api/v1/transfers/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"transfers-service",
+								"api",
+								"v1",
+								"transfers",
+								"transfer"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 15 May 2023 20:09:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 500,\n    \"message\": \"timeout\",\n    \"body\": {\n        \"requestInfo\": {\n            \"status\": \"Failed\",\n            \"error\": \"timeout\"\n        },\n        \"paymentInfo\": {\n            \"amount\": 1000,\n            \"id\": \"a774a09a-3209-4405-b108-df1700bbf354\"\n        }\n    }\n}"
+				},
+				{
+					"name": "Service Unreachable",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"beneficiary\":{\n        \"name\": \"JAMES TIMEOUT\",\n        \"account\": {\n            \"accountNumber\": \"93093809\",\n            \"currency\": \"USD\",\n            \"routingNumber\": \"928392\"\n        }\n    },\n    \"amount\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/transfers-service/api/v1/transfers/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"transfers-service",
+								"api",
+								"v1",
+								"transfers",
+								"transfer"
+							]
+						}
+					},
+					"status": "Service Unavailable",
+					"code": 503,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 May 2023 11:21:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 514,\n    \"message\": \"Unable to reach Transfers Gateway\"\n}"
+				}
+			]
+		}
+	]
+}
